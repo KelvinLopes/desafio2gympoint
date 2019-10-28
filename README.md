@@ -13,6 +13,6 @@ Foi utilizado:
 * EditorConfig,
 * Sequelize com o PostgreSQL,
 * JWT,
-* Yup;,
+* Yup;
 
 É possível inserir informações dos estudantes e atualizá las, mas apenas o usuário admin pode ter esse privilégio.
