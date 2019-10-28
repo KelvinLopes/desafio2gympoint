@@ -10,10 +10,12 @@ class App {
     this.routes();
   }
 
+  // Permite ou não uma ação
   middlewares() {
     this.server.use(express.json());
   }
 
+  // Rotas da api
   routes() {
     this.server.use(routes);
   }
