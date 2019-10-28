@@ -12,7 +12,7 @@ Foi utilizado:
 * Prettier,
 * EditorConfig,
 * Sequelize com o PostgreSQL,
-*JWT,
-*Yup;
+* JWT,
+* Yup;,
 
 É possível inserir informações dos estudantes e atualizá las, mas apenas o usuário admin pode ter esse privilégio.
