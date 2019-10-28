@@ -16,3 +16,4 @@ Foi utilizado:
 * Yup;
 
 É possível inserir informações dos estudantes e atualizá las, mas apenas o usuário admin pode ter esse privilégio.
+É preciso usar o Insomnia ou outro rest-cli  para testes.
