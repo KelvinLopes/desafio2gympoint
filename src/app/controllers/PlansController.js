@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import Plans from '../models/Plans';
 
 class PlansController {
-  // Cadastro de novos planos
+  // Registration of new plans
   async store(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string()
