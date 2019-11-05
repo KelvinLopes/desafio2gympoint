@@ -4,27 +4,34 @@ import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
 import StudentsController from './app/controllers/StudentController';
 import PlansController from './app/controllers/PlansController';
+import EnrollmentController from './app/controllers/EnrollmentController';
 
 import autMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 
-// Rotas de login = /sessions e rotas de criação de user e students
+// Login and session routes, user and student creation routes
 routes.post('/sessions', SessionController.store);
 routes.post('/users', UserController.store);
 routes.post('/students', StudentsController.store);
 
-// Rotas para criar, editar, listar e remover planos Gympont
+// Routes for creating, editing, listing and removing academy plans
 routes.post('/plans', PlansController.store);
 routes.get('/plans', PlansController.index);
 
+// Enrollments routes
+routes.post('/enrollment', EnrollmentController.store);
+routes.get('/enrollment', EnrollmentController.index);
+
 routes.use(autMiddleware);
-// Rotas de edição users, students, Plans
+// Editing routes: users, students, Plans, Enrollment
 routes.put('/users', UserController.update);
 routes.put('/students', StudentsController.update);
 routes.put('/plans', PlansController.update);
+routes.put('/enrollment/:enrollmented_id', EnrollmentController.update);
 
-// Routas que deletam
+// Deleting routes
 routes.delete('/plans/:id', PlansController.delete);
+routes.delete('/enrollment/:enrollmented_id', EnrollmentController.delete);
 
 export default routes;
