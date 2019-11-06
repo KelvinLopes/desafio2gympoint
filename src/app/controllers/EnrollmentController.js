@@ -138,13 +138,6 @@ class EnrollmentController {
         .json({ error: ' This enrollment not exists or removed.' });
     }
 
-    // Checks if the parameter  information belongs to the student
-    if (enrollment !== req.params) {
-      return res
-        .status(400)
-        .json({ error: ' This information does not belong to this student.' });
-    }
-
     return res.json(
       await enrollment.update({
         student_id,

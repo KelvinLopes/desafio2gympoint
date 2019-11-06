@@ -5,6 +5,7 @@ import UserController from './app/controllers/UserController';
 import StudentsController from './app/controllers/StudentController';
 import PlansController from './app/controllers/PlansController';
 import EnrollmentController from './app/controllers/EnrollmentController';
+import CheckinController from './app/controllers/CheckinController';
 
 import autMiddleware from './app/middlewares/auth';
 
@@ -22,6 +23,10 @@ routes.get('/plans', PlansController.index);
 // Enrollments routes
 routes.post('/enrollment', EnrollmentController.store);
 routes.get('/enrollment', EnrollmentController.index);
+
+// Checkins routes
+routes.post('/checkins', CheckinController.store);
+routes.get('/checkins/:student_id', CheckinController.index);
 
 routes.use(autMiddleware);
 // Editing routes: users, students, Plans, Enrollment
