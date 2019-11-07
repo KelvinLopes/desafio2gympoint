@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
 import HelpOrder from '../models/HelpOrders';
 import Students from '../models/Students';
+import Queue from '../../lib/Queue';
+import AnswerMail from '../jobs/answerMail';
 
 class AnswerHelpController {
   async store(req, res) {
@@ -35,6 +37,10 @@ class AnswerHelpController {
     const answered = await searchHelpOrders.update({
       answer: req.body.answer,
       answer_at: new Date(),
+    });
+    // Add queue email
+    await Queue.add(AnswerMail.key, {
+      answered,
     });
 
     return res.json(answered);

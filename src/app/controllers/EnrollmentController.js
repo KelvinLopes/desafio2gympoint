@@ -3,6 +3,8 @@ import { isBefore, parseISO, addMonths } from 'date-fns';
 import Enrollment from '../models/Enrollment';
 import Plans from '../models/Plans';
 import Students from '../models/Students';
+import Queue from '../../lib/Queue';
+import EnrollmentedMail from '../jobs/enrollmentedMail';
 
 class EnrollmentController {
   async store(req, res) {
@@ -68,6 +70,26 @@ class EnrollmentController {
       end_date,
       plan_id,
       price,
+    });
+
+    // Send email to student
+    const enrollmentedStudent = await Enrollment.findByPk(enrollmented.id, {
+      include: [
+        {
+          model: Students,
+          as: 'students',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Plans,
+          as: 'plans',
+          attributes: ['title', 'duration'],
+        },
+      ],
+    });
+
+    await Queue.add(EnrollmentedMail.key, {
+      enrollmentedStudent,
     });
     return res.json(enrollmented);
   }

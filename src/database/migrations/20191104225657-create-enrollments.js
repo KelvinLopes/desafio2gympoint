@@ -19,22 +19,18 @@ module.exports = {
         references: { model: 'plans', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false,
       },
       start_date: {
         type: Sequelize.DATE,
         allowNull: false,
-        unique: true,
       },
       end_date: {
         type: Sequelize.DATE,
         allowNull: false,
-        unique: true,
       },
       price: {
         type: Sequelize.DOUBLE,
         allowNull: false,
-        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,
