@@ -28,10 +28,10 @@ class AnswerHelpController {
       ],
     });
 
-    if (searchHelpOrders.answer_at !== null) {
-      return res
-        .status(400)
-        .json({ error: 'This help order already gone answered.' });
+    if (!searchHelpOrders || searchHelpOrders.answer_at !== null) {
+      return res.status(400).json({
+        error: 'This help order already gone answered or does not exist.',
+      });
     }
 
     const answered = await searchHelpOrders.update({

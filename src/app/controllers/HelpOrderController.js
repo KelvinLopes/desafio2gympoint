@@ -42,6 +42,12 @@ class HelpOrderController {
         answer_at: null,
       },
     });
+
+    if (!listHelpOrders || listHelpOrders.answer_at !== null) {
+      return res.status(400).json({
+        error: 'You have no new help orders.',
+      });
+    }
     return res.json(listHelpOrders);
   }
 }
