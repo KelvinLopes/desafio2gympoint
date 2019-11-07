@@ -15,13 +15,6 @@ class CheckinController {
 
     // Current date
     const checkinNow = Number(new Date());
-
-    /**
-     * Compares if between the current and last date there are 5 checkins
-     * and maxCheckin looks for all checkins, then expiration if it's bigger
-     * than allowed. startDateCheckin, references the value I want to subtract.
-     */
-
     const amountDateCheckin = Number(subDays(checkinNow, 7));
     const maxCheckin = await Checkins.findAll({
       where: {

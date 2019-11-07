@@ -28,7 +28,7 @@ class AnswerHelpController {
       ],
     });
 
-    if (!searchHelpOrders || searchHelpOrders.answer_at !== null) {
+    if (searchHelpOrders.answer_at !== null) {
       return res
         .status(400)
         .json({ error: 'This help order already gone answered.' });
