@@ -1,5 +1,5 @@
 
-# Api para cadastro de alunos 🎓 🚀- Desafio 2 Rocketseat 
+# Api para cadastro de alunos 🎓 🚀- Desafio Rocketseat
 
 Foi utilizado:
 
