@@ -1,5 +1,5 @@
 
-# Api para cadastro de alunos 🎓 🚀- Desafio Rocketseat
+# Api para cadastro de alunos 🎓 🚀- Desafio do Bootcamp goStack Rocketseat
 
 Foi utilizado:
 
