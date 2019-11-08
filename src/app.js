@@ -1,12 +1,19 @@
 import 'dotenv/config';
 import express from 'express';
 import Youch from 'youch';
+import * as Sentry from '@sentry/node';
+import 'express-async-errors';
+
 import routes from './routes';
+import sentryConfig from './config/sentry';
+
 import './database';
 
 class App {
   constructor() {
     this.server = express();
+
+    Sentry.init(sentryConfig);
 
     this.middlewares();
     this.routes();
@@ -15,12 +22,14 @@ class App {
 
   // Permite ou não uma ação
   middlewares() {
+    this.server.use(Sentry.Handlers.requestHandler());
     this.server.use(express.json());
   }
 
   // Rotas da api
   routes() {
     this.server.use(routes);
+    this.server.use(Sentry.Handlers.errorHandler());
   }
 
   // Mostra os errors no proprio Rest-cli
