@@ -57,8 +57,7 @@ class StudentController {
 
     if (!getStudents) {
       return res.status(400).json({
-        error:
-          'Could not access the student list, please try again. If error persist contact support.',
+        error: 'You have no registered students yet.',
       });
     }
 
