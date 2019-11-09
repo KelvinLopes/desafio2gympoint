@@ -22,6 +22,6 @@ Foi utilizado:
 * Yup para construção de schemas de validação.
 
 É possível inserir informações dos estudantes, atualizá las, criar e editar planos para a academia,mas apenas o usuário admin pode ter esse privilégio.
-Agora é póssivel listar: Todos os estudantes cadastrados, todos os planos que se cria, todas as matrículas dos alunos. Além de gerar matriculas em planos, é possível edita las e exclui las, controlar check ins, o máximo é 5 por semana. Alunos tiram dúvidas via app e recebem suporte via email, quando um aluno(a) se cadastra em um novo plano, este(a) recebe um email com todas as informações dele e com uma mensagem de saudação.
+Agora é póssivel listar: Todos os estudantes cadastrados, todos os planos que se cria, todas as matrículas dos alunos(as). Além de gerar matriculas em planos, é possível edita las e exclui las, controlar check ins, o máximo é 5 por semana. Alunos tiram dúvidas via app e recebem suporte via email, quando um aluno(a) se cadastra em um novo plano, este(a) recebe um email com todas as informações dele e com uma mensagem de saudação.
 
 É preciso usar o Insomnia ou outro rest-cli  para testes.
