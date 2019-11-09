@@ -8,7 +8,6 @@ class CheckinController {
   async store(req, res) {
     const schema = Yup.object().shape({
       student_id: Yup.number().required(),
-      start_date: Yup.string().required(),
     });
     // Checks to validation schema
     if (!(await schema.isValid(req.body))) {
@@ -18,17 +17,10 @@ class CheckinController {
     }
 
     const { student_id } = req.body;
-    const student = await Students.findOne({
-      where: { id: student_id },
-    });
-
-    // Checks to validation studant
-    if (!student) {
-      return res.status(400).json({ error: 'This student not enrollmented.' });
-    }
+    const checkinNow = Number(new Date());
 
     // Current date
-    const checkinNow = Number(new Date());
+
     const amountDateCheckin = Number(subDays(checkinNow, 7));
     const maxCheckin = await Checkins.findAll({
       where: {
@@ -39,6 +31,14 @@ class CheckinController {
       },
     });
 
+    const student = await Students.findOne({
+      where: { id: student_id },
+    });
+
+    // Checks to validation studant
+    if (!student) {
+      return res.status(400).json({ error: 'This student not enrollmented.' });
+    }
     /**
      * Compares if between the current and last date there are 5 checkins
      * and maxCheckin looks for all checkins, then expiration if it's bigger

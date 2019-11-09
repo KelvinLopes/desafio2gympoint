@@ -96,9 +96,13 @@ class EnrollmentController {
 
   // List in order id enrollments
   async index(req, res) {
+    const { page = 1 } = req.query;
+
     const enrollmented = await Enrollment.findAll({
-      order: [['id', 'Desc']],
+      order: [['id', 'asc']],
       attributes: ['id', 'start_date', 'end_date', 'plan_id', 'price'],
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: Students,

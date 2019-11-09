@@ -42,6 +42,29 @@ class StudentController {
     });
   }
 
+  // Listar todos os alunos
+
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const getStudents = await Student.findAll({
+      order: [['id', 'asc']],
+
+      limit: 10,
+      offset: (page - 1) * 10,
+      attributes: ['id', 'name', 'email', 'age', 'weight', 'height'],
+    });
+
+    if (!getStudents) {
+      return res.status(400).json({
+        error:
+          'Could not access the student list, please try again. If error persist contact support.',
+      });
+    }
+
+    return res.json(getStudents);
+  }
+
   // Atualização de students
   async update(req, res) {
     const schema = Yup.object().shape({

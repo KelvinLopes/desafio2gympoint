@@ -17,6 +17,7 @@ const routes = new Router();
 routes.post('/sessions', SessionController.store);
 routes.post('/users', UserController.store);
 routes.post('/students', StudentsController.store);
+routes.get('/students', StudentsController.index);
 
 // Routes for creating, editing, listing and removing academy plans
 routes.post('/plans', PlansController.store);
